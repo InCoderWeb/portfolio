@@ -3,25 +3,96 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+@layer base {
+	:root {
+		--background: 163 100% 95%;
+		--foreground: 163 5% 0%;
+		--card: 163 50% 90%;
+		--card-foreground: 163 5% 10%;
+		--popover: 163 100% 95%;
+		--popover-foreground: 163 100% 0%;
+		--primary: 163 100% 23%;
+		--primary-foreground: 0 0% 100%;
+		--secondary: 163 30% 70%;
+		--secondary-foreground: 0 0% 0%;
+		--muted: 125 30% 85%;
+		--muted-foreground: 163 5% 35%;
+		--accent: 125 30% 80%;
+		--accent-foreground: 163 5% 10%;
+		--destructive: 0 100% 30%;
+		--destructive-foreground: 163 5% 90%;
+		--border: 163 30% 50%;
+		--input: 163 30% 18%;
+		--ring: 163 100% 23%;
+		--radius: 0.65rem;
+	}
+	.dark {
+		--background: 163 50% 5%;
+		--foreground: 163 5% 90%;
+		--card: 163 50% 0%;
+		--card-foreground: 163 5% 90%;
+		--popover: 163 50% 5%;
+		--popover-foreground: 163 5% 90%;
+		--primary: 163 100% 23%;
+		--primary-foreground: 0 0% 100%;
+		--secondary: 163 30% 10%;
+		--secondary-foreground: 0 0% 100%;
+		--muted: 125 30% 15%;
+		--muted-foreground: 163 5% 60%;
+		--accent: 125 30% 15%;
+		--accent-foreground: 163 5% 90%;
+		--destructive: 0 100% 30%;
+		--destructive-foreground: 163 5% 90%;
+		--border: 163 30% 18%;
+		--input: 163 30% 18%;
+		--ring: 163 100% 23%;
+		--radius: 0.65rem;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+body{
+	@apply bg-[#0d261f]
+}
+
+.navbar {
+	@apply flex justify-between items-center text-white min-h-[3rem] md:mx-[2rem] md:my-[1rem] md:!rounded-md py-2 px-6 bg-primary/30
+}
+
+.navbar ul,
+.navbar .right {
+	@apply flex
+}
+
+.navbar .logo{
+	@apply sm:text-xl font-bold text-white/80 hover:text-white cursor-pointer
+}
+
+.navbar ul li {
+	@apply mx-2 text-gray-300/80
 }
