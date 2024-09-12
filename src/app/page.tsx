@@ -1,5 +1,4 @@
 import Navbar from "@/components/custom/navbar";
-import { BackgroundLines } from "@/components/ui/background-lines";
 
 export default function Home() {
 	return (
