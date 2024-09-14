@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap");
+
 :root {
 	--background: #ffffff;
 	--foreground: #171717;
@@ -77,11 +81,129 @@
 }
 
 body {
+	font-family: "SUSE", sans-serif;
 	@apply bg-[#161616];
 }
 
+.playpen-sans-regular {
+	font-family: "Playpen Sans", cursive;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.poppins-thin {
+	font-family: "Poppins", sans-serif;
+	font-weight: 100;
+	font-style: normal;
+}
+
+.poppins-extralight {
+	font-family: "Poppins", sans-serif;
+	font-weight: 200;
+	font-style: normal;
+}
+
+.poppins-light {
+	font-family: "Poppins", sans-serif;
+	font-weight: 300;
+	font-style: normal;
+}
+
+.poppins-regular {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.poppins-medium {
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+}
+
+.poppins-semibold {
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+.poppins-bold {
+	font-family: "Poppins", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.poppins-extrabold {
+	font-family: "Poppins", sans-serif;
+	font-weight: 800;
+	font-style: normal;
+}
+
+.poppins-black {
+	font-family: "Poppins", sans-serif;
+	font-weight: 900;
+	font-style: normal;
+}
+
+.poppins-thin-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 100;
+	font-style: italic;
+}
+
+.poppins-extralight-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 200;
+	font-style: italic;
+}
+
+.poppins-light-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.poppins-regular-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.poppins-medium-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+	font-style: italic;
+}
+
+.poppins-semibold-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	font-style: italic;
+}
+
+.poppins-bold-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 700;
+	font-style: italic;
+}
+
+.poppins-extrabold-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 800;
+	font-style: italic;
+}
+
+.poppins-black-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 900;
+	font-style: italic;
+}
+
+/* ---------------------- Navbar Section Start ---------------------- */
+
 .navbar {
-	@apply flex relative z-[99999] justify-between items-center text-white min-h-[3rem] md:mx-[2rem] md:my-[1rem] md:!rounded-md py-2 px-6 bg-[#212121];
+	@apply flex w-full md:w-[calc(100%-3.5rem)] fixed top-0 left-0 z-[99999] justify-between items-center text-white min-h-[3.5rem] md:mx-[1.6rem] md:my-[1.6rem] md:!rounded-md py-3 px-6 bg-[#212121];
 }
 
 .navbar ul,
@@ -96,3 +218,33 @@ body {
 .navbar ul li {
 	@apply mx-2 text-gray-300/80;
 }
+
+/* ---------------------- Navbar Section End ---------------------- */
+
+/* ---------------------- Hero Section Start ---------------------- */
+
+.hero {
+	@apply h-screen flex justify-center items-center;
+}
+
+.hero .container {
+	@apply flex-col sm:flex-row flex justify-between items-center w-full text-white;
+}
+
+.hero .container .left {
+	@apply flex flex-col justify-center items-center md:items-start md:text-left text-center mb-12;
+}
+
+.hero .container :is(.left, .right) {
+	@apply w-full;
+}
+
+.hero .container .right {
+	@apply flex flex-col justify-end items-center;
+}
+
+.hero .container .right img {
+	@apply max-h-[30rem];
+}
+
+/* ---------------------- Hero Section End ---------------------- */
