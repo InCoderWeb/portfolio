@@ -204,7 +204,7 @@ body {
 /* ---------------------- Navbar Section Start ---------------------- */
 
 .navbar {
-	@apply flex w-full md:w-[calc(100%-3.5rem)] fixed top-0 left-0 z-[99999] justify-between items-center text-white min-h-[3.5rem] md:mx-[1.6rem] md:my-[1.6rem] md:!rounded-md py-3 px-6 bg-[#212121];
+	@apply flex w-full md:w-[calc(100%-3.5rem)] sm:fixed relative top-0 left-0 z-[99999] justify-between items-center text-white min-h-[3.5rem] md:mx-[1.6rem] md:my-[1.6rem] md:!rounded-md py-3 px-6 bg-[#212121];
 }
 
 .navbar ul,
@@ -233,7 +233,7 @@ body {
 }
 
 .hero .container .left {
-	@apply flex flex-col justify-center items-center md:items-start md:text-left text-center mb-12 mt-[12rem] sm:mt-0;
+	@apply flex flex-col justify-center items-center md:items-start md:text-left text-center mb-12 sm:mt-0;
 }
 
 .hero .container :is(.left, .right) {
