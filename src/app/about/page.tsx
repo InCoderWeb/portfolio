@@ -7,7 +7,7 @@ export default function Home() {
 			<section className="hero">
 				<div className="container">
 					<div className="left">
-						{/* <FlipWords words={heroFlipTexts} duration={2000} className="text-white" /> */}
+						<FlipWords words={heroFlipTexts} duration={2000} className="text-white" />
 					</div>
 					<div className="right"></div>
 				</div>

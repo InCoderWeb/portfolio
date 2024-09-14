@@ -27,3 +27,5 @@ export const navbarLinks = [
         icon: <FaBookmark />
     },
 ]
+
+export const heroFlipTexts = ["Web Developer", "Coder", "Blogger", "Youtuber"]

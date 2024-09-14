@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { StarsBackground } from "@/components/ui/stars-background";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+import Navbar from "@/components/custom/navbar";
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -29,7 +32,10 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-					{children}
+				<StarsBackground minTwinkleSpeed={2} starDensity={0.00040}  />
+				<ShootingStars />
+				<Navbar />
+				{children}
 			</body>
 		</html>
 	);
