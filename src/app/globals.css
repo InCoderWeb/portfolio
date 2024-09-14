@@ -82,6 +82,7 @@
 
 body {
 	font-family: "SUSE", sans-serif;
+	cursor: url('/public/assets/images/hero.png'), auto;
 	@apply bg-[#161616];
 }
 
@@ -232,7 +233,7 @@ body {
 }
 
 .hero .container .left {
-	@apply flex flex-col justify-center items-center md:items-start md:text-left text-center mb-12;
+	@apply flex flex-col justify-center items-center md:items-start md:text-left text-center mb-12 mt-[12rem] sm:mt-0;
 }
 
 .hero .container :is(.left, .right) {
@@ -245,6 +246,10 @@ body {
 
 .hero .container .right img {
 	@apply max-h-[30rem];
+}
+
+.heroBtn {
+	@apply cursor-pointer bg-transparent border-dashed border text-white/70 hover:text-white border-white/50 mx-2;
 }
 
 /* ---------------------- Hero Section End ---------------------- */

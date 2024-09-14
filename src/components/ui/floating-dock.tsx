@@ -48,7 +48,7 @@ const FloatingDockMobile = ({
 				{open && (
 					<motion.div
 						layoutId="nav"
-						className="absolute top-full mt-2 inset-x-0 flex flex-col gap-2"
+						className="backdrop-blur-md w-screen h-[18rem] absolute left-[-18rem] top-full mt-5 inset-x-[-1.5rem] flex flex-col gap-3 items-center"
 					>
 						{items.map((item, idx) => (
 							<motion.div
@@ -68,14 +68,18 @@ const FloatingDockMobile = ({
 								transition={{
 									delay: (items.length - 1 - idx) * 0.05,
 								}}
+								className="w-max bg-[#212121] z-[99999999] rounded-3xl"
 							>
 								<Link
 									href={item.href}
 									key={item.title}
-									className="h-10 w-10 rounded-full flex items-center justify-center"
+									className="h-10 w-max px-4 rounded-full flex items-center justify-center"
 								>
-									<div className="h-4 w-max flex items-center">
-										{item.icon} <h1 className="ml-2 sm:hidden">{item.title}</h1>
+									<div className="h-4 w-max flex justify-center items-center">
+										{item.icon}{" "}
+										<h1 className="ml-2 sm:hidden">
+											{item.title}
+										</h1>
 									</div>
 								</Link>
 							</motion.div>
