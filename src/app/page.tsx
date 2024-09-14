@@ -1,5 +1,5 @@
-import { FlipWords } from "@/components/ui/flip-words";
-import { heroFlipTexts } from "@/helpers/constants";
+// import { FlipWords } from "@/components/ui/flip-words";
+// import { heroFlipTexts } from "@/helpers/constants";
 
 export default function Home() {
 	return (
