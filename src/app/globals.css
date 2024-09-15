@@ -82,7 +82,8 @@
 
 body {
 	font-family: "SUSE", sans-serif;
-	cursor: url('/public/assets/images/hero.png'), auto;
+	cursor: url('/assets/images/rocket.png'), auto;
+	cursor: url('/assets/images/rocket launch.png'), pointer;
 	@apply bg-[#161616];
 }
 
@@ -228,24 +229,36 @@ body {
 	@apply h-screen flex justify-center items-center;
 }
 
-.hero .container {
+.about {
+	@apply min-h-screen flex justify-center items-center;
+}
+
+.hero .container,
+.about .container {
 	@apply flex-col sm:flex-row flex justify-between items-center w-full text-white;
 }
 
-.hero .container .left {
+.hero .container .left,
+.about .container .left {
 	@apply flex flex-col justify-center items-center md:items-start md:text-left text-center mb-12 sm:mt-0;
 }
 
-.hero .container :is(.left, .right) {
+.hero .container :is(.left, .right),
+.about .container :is(.left, .right) {
 	@apply w-full;
 }
 
-.hero .container .right {
+.hero .container .right,
+.about .container .right {
 	@apply flex flex-col justify-end items-center;
 }
 
 .hero .container .right img {
 	@apply max-h-[30rem];
+}
+
+.about .container .right img {
+	@apply max-h-[20rem];
 }
 
 .heroBtn {
