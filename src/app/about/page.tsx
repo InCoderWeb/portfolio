@@ -55,8 +55,8 @@ export default function About() {
 							About Me
 						</motion.h1>
 						<motion.p variants={fadeInUpAnimation} className="mt-2 mx-[2rem] md:mx-0 tracking-widest text-white/60 max-w-[40rem] text-[0.9rem]">
-							Hello, I'm Ashutosh Kumar, currently pursuing an Integrated Master of Computer Applications from Acropolis Institute of Technology and Research, Indore, India. With a strong foundation in				problem-solving and a collaborative mindset, I am passionate about developing cutting-edge solutions 		that blend innovation with practicality. I enjoy working in team environments, where I can leverage
-							my communication skills and technical expertise to contribute meaningfully to projects. Whether it's
+							Hello, I&apos;m Ashutosh Kumar, currently pursuing an Integrated Master of Computer Applications from Acropolis Institute of Technology and Research, Indore, India. With a strong foundation in				problem-solving and a collaborative mindset, I am passionate about developing cutting-edge solutions 		that blend innovation with practicality. I enjoy working in team environments, where I can leverage
+							my communication skills and technical expertise to contribute meaningfully to projects. Whether it&apos;s
 							coding, tackling new challenges, or learning the latest technologies, I&apos;m always eager to grow and
 							push boundaries. Let&apos;s connect and explore possibilities!
 						</motion.p>
