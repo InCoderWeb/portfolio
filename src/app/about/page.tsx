@@ -38,7 +38,7 @@ export default function About() {
 			<section className="about pb-[2rem] md:pb-0 mx-[2rem] md:mx-0">
 				<div className="container">
 					<motion.div
-						className="left mt-[4rem] md:mt-0"
+						className="left"
 						initial="hidden"
 						animate="show"
 						variants={fadeInUpAnimation}
