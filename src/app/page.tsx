@@ -6,6 +6,8 @@ import { BackgroundLines } from "@/components/ui/background-lines";
 import { Button } from "@/components/ui/button";
 import { CircleDot, CopyCheckIcon } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import { useClipboard } from "@mantine/hooks";
+import Link from "next/link";
 
 const fadeInUpAnimation: Variants = {
 	hidden: {
@@ -36,6 +38,7 @@ const zoomUpAnimation: Variants = {
 };
 
 export default function Home() {
+	const clipboard = useClipboard({ timeout: 1000 });
 	return (
 		<>
 			<section className="hero">
@@ -65,7 +68,7 @@ export default function Home() {
 							I&apos;m a
 							<FlipWords
 								words={heroFlipTexts}
-								duration={2000}
+								duration={3000}
 								className="text-white"
 							/>
 						</motion.h1>
@@ -83,12 +86,22 @@ export default function Home() {
 							variants={fadeInUpAnimation}
 							className="mt-4 flex justify-start items-center"
 						>
-							<Button className="heroBtn">
-								<CircleDot className="size-4 mr-2" /> Hire Me
-							</Button>
-							<Button className="heroBtn">
-								<CopyCheckIcon className="size-4 mr-2" /> Copy
-								Email
+							<Link href="/contact">
+								<Button className="heroBtn">
+									<CircleDot className="size-4 mr-2" /> Hire
+									Me
+								</Button>
+							</Link>
+							<Button
+								className="heroBtn"
+								onClick={() =>
+									clipboard.copy(
+										"ashutoshtiwary2021@gmail.com"
+									)
+								}
+							>
+								<CopyCheckIcon className="size-4 mr-2" />{" "}
+								{clipboard.copied ? "Copied" : "Copy Email"}
 							</Button>
 						</motion.div>
 					</motion.div>

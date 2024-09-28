@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { navbarLinks } from "@/helpers/constants";
 import Link from "next/link";
 import { FloatingDock } from "../ui/floating-dock";
-import { CircleDot } from "lucide-react";
+import { CircleDot, Linkedin } from "lucide-react";
 
 const Navbar = () => {
 	return (
@@ -12,7 +12,7 @@ const Navbar = () => {
 				<Link href={"/"} className="logo left">Ashutosh Kumar</Link>
 				<FloatingDock items={navbarLinks} />
 				<div className="right">
-					<Button className="ml-3"><CircleDot className="size-4 mr-2" /> Hire Me</Button>
+					<Link href={"https://www.linkedin.com/in/incoderweb/"} target="_blank"><Button className="ml-3 text-[.9rem] flex justify-center items-center">Linked -<Linkedin className="size-4 ml-1" /></Button></Link>
 				</div>
 			</nav>
 		</>

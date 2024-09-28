@@ -226,11 +226,11 @@ body {
 /* ---------------------- Hero Section Start ---------------------- */
 
 .hero {
-	@apply h-screen flex justify-center items-center;
+	@apply min-h-screen flex justify-center items-center mt-[6rem] sm:mt-0;
 }
 
 .about {
-	@apply min-h-screen flex justify-center items-center;
+	@apply min-h-screen flex justify-center items-center mt-[6rem] sm:mt-0;
 }
 
 .hero .container,
