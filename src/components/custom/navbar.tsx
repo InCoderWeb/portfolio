@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { navbarLinks } from "@/helpers/constants";
 import Link from "next/link";
 import { FloatingDock } from "../ui/floating-dock";
-import { CircleDot, Linkedin } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
 const Navbar = () => {
 	return (
