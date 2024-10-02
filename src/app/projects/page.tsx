@@ -6,7 +6,6 @@ import { HiLink } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
 import {
 	Drawer,
-	DrawerClose,
 	DrawerContent,
 	DrawerDescription,
 	DrawerFooter,
