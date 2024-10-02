@@ -12,7 +12,7 @@ import React, {
 
 interface ModalContextType {
   open: boolean;
-  setOpen: (open: boolean) => void;
+  setOpen: any;
 }
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
