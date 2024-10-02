@@ -5,12 +5,15 @@ import Card from "@/components/custom/card";
 import { HiLink } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
 import {
-	Modal,
-	ModalBody,
-	ModalContent,
-	ModalFooter,
-	ModalTrigger,
-} from "@/components/ui/animated-modal";
+	Drawer,
+	DrawerClose,
+	DrawerContent,
+	DrawerDescription,
+	DrawerFooter,
+	DrawerHeader,
+	DrawerTitle,
+	DrawerTrigger,
+} from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { projectsData } from "@/helpers/constants";
@@ -36,33 +39,35 @@ export default function Projects() {
 					{projectsData.map((d) => {
 						return (
 							<>
-								<Modal>
-									<ModalTrigger>
+								<Drawer>
+									<DrawerTrigger>
 										<Card
 											title={d.title}
 											desc={d.description}
 											url={d.url}
 										/>
-									</ModalTrigger>
-									<ModalBody>
-										<ModalContent>
-											<div className="cursor-pointer p-2">
-												<img
-													className="w-full object-cover rounded-xl"
-													src={d.url}
-													alt={d.title}
-												/>
-												<div className="p-2">
-													<h2 className="font-bold text-lg mb-2 text-white/80">
-														{d.title}
-													</h2>
-													<p className="text-sm text-white/60">
-														{d.description}
-													</p>
+									</DrawerTrigger>
+									<DrawerContent>
+										<DrawerHeader>
+											<DrawerTitle>
+												{d.title}
+											</DrawerTitle>
+											<DrawerDescription>
+												<div className="cursor-pointer p-2 flex justify-center items-center flex-col">
+													<img
+														className="w-full max-w-[30rem] object-cover rounded-xl"
+														src={d.url}
+														alt={d.title}
+													/>
+													<div className="p-2">
+														<p className="text-sm text-white/60">
+															{d.description}
+														</p>
+													</div>
 												</div>
-											</div>
-										</ModalContent>
-										<ModalFooter>
+											</DrawerDescription>
+										</DrawerHeader>
+										<DrawerFooter>
 											<div className="flex justify-center items-center">
 												<Link
 													href={d.previewUrl}
@@ -84,9 +89,9 @@ export default function Projects() {
 													</Button>
 												</Link>
 											</div>
-										</ModalFooter>
-									</ModalBody>
-								</Modal>
+										</DrawerFooter>
+									</DrawerContent>
+								</Drawer>
 							</>
 						);
 					})}
