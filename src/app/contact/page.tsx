@@ -51,14 +51,14 @@ export default function Contact() {
 								variants={fadeInUpAnimation}
 								className="text-white text-3xl font-extrabold"
 							>
-								Let's Talk
+								Let&apos;s Talk
 							</motion.h1>
 							<motion.p
 								variants={fadeInUpAnimation}
 								className="text-sm text-white/50 mt-4"
 							>
 								Have some big idea or brand to develop and need
-								help? Then reach out we'd love to hear about
+								help? Then reach out we&apos;d love to hear about
 								your project and provide help.
 							</motion.p>
 
