@@ -80,10 +80,13 @@
 	}
 }
 
+* {
+	/* cursor: url("/assets/images/rocket.png"), auto; */
+	/* cursor: url("/assets/images/rocket launch.png"), pointer; */
+}
+
 body {
 	font-family: "SUSE", sans-serif;
-	cursor: url('/assets/images/rocket.png'), auto;
-	cursor: url('/assets/images/rocket launch.png'), pointer;
 	@apply bg-[#161616];
 }
 
@@ -233,6 +236,14 @@ body {
 	@apply min-h-screen flex justify-center items-center mt-[6rem] sm:mt-0;
 }
 
+.contact {
+	@apply  min-h-screen flex justify-center items-center mt-[6rem] sm:mt-0;
+}
+
+.projects {
+	@apply min-h-screen overflow-hidden flex justify-center items-center;
+}
+
 .hero .container,
 .about .container {
 	@apply flex-col sm:flex-row flex justify-between items-center w-full text-white;
@@ -266,3 +277,37 @@ body {
 }
 
 /* ---------------------- Hero Section End ---------------------- */
+
+.hideScrollBar {
+	scrollbar-width: none;
+}
+
+.hideScrollBar::-webkit-scrollbar {
+	display: none;
+}
+
+.putCenter {
+	@apply flex justify-center items-center
+}
+
+.glow {
+	transition: all .5s ease-in-out;
+}
+
+.glow:hover {
+	text-shadow: 
+	0 0 0.5rem #ffffff97,
+	0 0 1rem #ffffff97,
+	0 0 1.5rem #ffffff97,
+	0 0 2.5rem #fff,
+	0 0 4rem #fff,
+	0 0 5.5rem #fff,
+	0 0 6rem #fff,
+	0 0 9.5rem #fff;
+}
+
+
+
+.contactInput {
+	@apply w-full rounded-md py-3 px-4 bg-gray-100/20 text-gray-800 text-sm placeholder:text-white/30 text-white outline-blue-500 focus:bg-transparent
+}

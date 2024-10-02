@@ -8,6 +8,8 @@ import { CircleDot, CopyCheckIcon } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import { useClipboard } from "@mantine/hooks";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { InfinitySpin } from "react-loader-spinner";
 
 const fadeInUpAnimation: Variants = {
 	hidden: {
@@ -39,6 +41,17 @@ const zoomUpAnimation: Variants = {
 
 export default function Home() {
 	const clipboard = useClipboard({ timeout: 1000 });
+	const [loading, setLoading] = useState(true);
+	useEffect(() => {
+		setTimeout(() => setLoading(false), 3300);
+	}, []);
+	if (loading) {
+		return (
+			<div className="flex justify-center items-center z-[99999999] bg-[#161616] h-full w-full fixed top-0 left-0">
+				<InfinitySpin width="200" color="#ffffff" />
+			</div>
+		);
+	}
 	return (
 		<>
 			<section className="hero">
