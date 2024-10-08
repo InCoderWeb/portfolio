@@ -20,17 +20,17 @@ import { useEffect, useState } from "react";
 import { InfinitySpin } from "react-loader-spinner";
 
 export default function Projects() {
-	const [loading, setLoading] = useState(true);
-	useEffect(() => {
-		setTimeout(() => setLoading(false), 3300);
-	}, []);
-	if (loading) {
-		return (
-			<div className="flex justify-center items-center z-[99999999] bg-[#161616] h-full w-full fixed top-0 left-0">
-				<InfinitySpin width="200" color="#ffffff" />
-			</div>
-		);
-	}
+	// const [loading, setLoading] = useState(true);
+	// useEffect(() => {
+	// 	setTimeout(() => setLoading(false), 3300);
+	// }, []);
+	// if (loading) {
+	// 	return (
+	// 		<div className="flex justify-center items-center z-[99999999] bg-[#161616] h-full w-full fixed top-0 left-0">
+	// 			<InfinitySpin width="200" color="#ffffff" />
+	// 		</div>
+	// 	);
+	// }
 	return (
 		<>
 			<section className="projects pb-[2rem] md:pb-0 mx-[2rem] md:mx-0">
