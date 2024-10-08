@@ -8,8 +8,6 @@ import { CircleDot, CopyCheckIcon } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import { useClipboard } from "@mantine/hooks";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { InfinitySpin } from "react-loader-spinner";
 
 const fadeInUpAnimation: Variants = {
 	hidden: {

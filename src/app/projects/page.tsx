@@ -16,8 +16,6 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { projectsData } from "@/helpers/constants";
-import { useEffect, useState } from "react";
-import { InfinitySpin } from "react-loader-spinner";
 
 export default function Projects() {
 	// const [loading, setLoading] = useState(true);

@@ -3,8 +3,6 @@
 "use client";
 import { programmingIcons } from "@/helpers/constants";
 import { Variants, motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { InfinitySpin } from "react-loader-spinner";
 
 const fadeInUpAnimation: Variants = {
 	hidden: {
