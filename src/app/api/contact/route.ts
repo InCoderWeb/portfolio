@@ -29,6 +29,7 @@ export async function POST(request: Request) {
         console.error("Error sending email:", error); // Log the error for debugging
         return Response.json({
             status: 500,
+            error,
             message: "Unable to send email this time."
         });
     }

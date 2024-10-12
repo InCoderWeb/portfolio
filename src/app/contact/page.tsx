@@ -127,6 +127,7 @@ export default function Contact() {
 						setIsSent(false);
 					}, 3000);
 				} else {
+					console.error(data.error);
 					setLoading(false);
 					setIsErr(true);
 					setTimeout(() => {
