@@ -113,7 +113,7 @@ export default function Contact() {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				if (data.status) {
+				if (data.status == 1) {
 					setLoading(false);
 					setFormData({
 						UserName: "",
@@ -126,11 +126,17 @@ export default function Contact() {
 					setTimeout(() => {
 						setIsSent(false);
 					}, 3000);
+				} else {
+					setLoading(false);
+					setIsErr(true);
+					setTimeout(() => {
+						setIsErr(false);
+					}, 3000);
 				}
 			})
 			.catch((err) => {
 				console.log(err);
-				
+
 				setIsErr(true);
 				setTimeout(() => {
 					setIsErr(false);
@@ -335,8 +341,7 @@ export default function Contact() {
 							)}
 							{isErr && (
 								<div className="text-red-600 flex justify-center items-center">
-									<BiSolidError className="mr-1" /> Message
-									Sent Successfully
+									<BiSolidError className="mr-1" /> Cannot Send Message This Time.
 								</div>
 							)}
 						</motion.form>
