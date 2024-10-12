@@ -36,7 +36,7 @@ export default function Projects() {
 					{projectsData.map((d) => {
 						return (
 							<>
-								<Drawer>
+								<Drawer key={d.title}>
 									<DrawerTrigger>
 										<Card
 											title={d.title}

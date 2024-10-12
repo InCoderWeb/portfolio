@@ -309,5 +309,13 @@ body {
 
 
 .contactInput {
-	@apply w-full rounded-md py-3 px-4 bg-gray-100/20 text-gray-800 text-sm placeholder:text-white/30 text-white outline-blue-500 focus:bg-transparent
+	@apply w-full rounded-md py-3 px-4 bg-gray-100/20 text-sm placeholder:text-white/30 text-white outline-blue-500 focus:bg-transparent
+}
+
+.errorBox {
+	@apply text-red-500 my-1 pl-1 text-sm
+}
+
+.inputWrapper{
+	@apply w-full
 }

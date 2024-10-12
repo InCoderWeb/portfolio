@@ -6,6 +6,10 @@ import { IoMail } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { FaInstagram } from "react-icons/fa6";
+import { useState } from "react";
+import { IoIosRocket } from "react-icons/io";
+import { BiSolidError } from "react-icons/bi";
+import z from "zod";
 
 const fadeInUpAnimation: Variants = {
 	hidden: {
@@ -22,18 +26,117 @@ const fadeInUpAnimation: Variants = {
 	},
 };
 
+type ContactFormData = {
+	UserName: string;
+	email: string;
+	subject: string;
+	message: string;
+};
+
 export default function Contact() {
-	// const [loading, setLoading] = useState(true);
-	// useEffect(() => {
-	// 	setTimeout(() => setLoading(false), 3300);
-	// }, []);
-	// if (loading) {
-	// 	return (
-	// 		<div className="flex justify-center items-center z-[99999999] bg-[#161616] h-full w-full fixed top-0 left-0">
-	// 			<InfinitySpin width="200" color="#ffffff" />
-	// 		</div>
-	// 	);
-	// }
+	const Contact = z.object({
+		UserName: z.string().min(2, "Name is required"),
+		email: z.string().email("Invalid email"),
+		subject: z.string().min(1, "Subject is required"),
+		message: z.string().min(1, "Message is required"),
+	});
+	const [formData, setFormData] = useState({
+		UserName: "",
+		email: "",
+		subject: "",
+		message: "",
+	});
+
+	const [loading, setLoading] = useState<boolean>(false);
+	const [isSent, setIsSent] = useState<boolean>(false);
+	const [isErr, setIsErr] = useState<boolean>(false);
+
+	const [formErrors, setFormErrors] = useState<Partial<ContactFormData>>({});
+
+	// Handler to update form data and validate input
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		const { name, value } = e.target as {
+			name: keyof ContactFormData;
+			value: string;
+		};
+		// Update formData using the dynamic key and the previous state
+		setFormData((prev) => ({
+			...prev,
+			[name]: value,
+		}));
+
+		// Validate the specific field
+		try {
+			Contact.shape[name].parse(value);
+			// Clear error if valid
+			setFormErrors((prev) => ({ ...prev, [name]: "" }));
+		} catch (error) {
+			if (error instanceof z.ZodError) {
+				// Set the specific field error message
+				setFormErrors((prev) => ({
+					...prev,
+					[name]: error.errors[0].message,
+				}));
+			}
+		}
+	};
+
+	const submitContactForm = () => {
+		try {
+			// Validate the entire form data
+			Contact.parse(formData);
+			sentMessage();
+		} catch (error) {
+			if (error instanceof z.ZodError) {
+				const errors: Partial<ContactFormData> = {};
+				error.errors.forEach((d) => {
+					errors[d.path[0] as keyof ContactFormData] = d.message;
+				});
+				setFormErrors(errors);
+			} else {
+				console.error("Unexpected error:", error);
+			}
+		}
+	};
+
+	const sentMessage = () => {
+		setLoading(true);
+
+		fetch("/api/contact", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(formData), // Send formData as JSON
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.status) {
+					setLoading(false);
+					setFormData({
+						UserName: "",
+						email: "",
+						subject: "",
+						message: "",
+					});
+					setFormErrors({});
+					setIsSent(true);
+					setTimeout(() => {
+						setIsSent(false);
+					}, 3000);
+				}
+			})
+			.catch((err) => {
+				setIsErr(true);
+				setTimeout(() => {
+					setIsErr(false);
+				}, 3000);
+			})
+			.finally(() => setLoading(false));
+	};
+
 	return (
 		<>
 			<motion.section className="contact pb-[2rem] md:pb-0 mx-[2rem] md:mx-0">
@@ -56,11 +159,14 @@ export default function Contact() {
 								className="text-sm text-white/50 mt-4"
 							>
 								Have some big idea or brand to develop and need
-								help? Then reach out we&apos;d love to hear about
-								your project and provide help.
+								help? Then reach out we&apos;d love to hear
+								about your project and provide help.
 							</motion.p>
 
-							<motion.div variants={fadeInUpAnimation} className="mt-12">
+							<motion.div
+								variants={fadeInUpAnimation}
+								className="mt-12"
+							>
 								<h2 className="text-white/80 text-base font-bold">
 									Email
 								</h2>
@@ -85,28 +191,40 @@ export default function Contact() {
 							</motion.div>
 
 							<div className="mt-12">
-								<motion.h2 variants={fadeInUpAnimation} className="text-white/80 text-base font-bold">
+								<motion.h2
+									variants={fadeInUpAnimation}
+									className="text-white/80 text-base font-bold"
+								>
 									Socials
 								</motion.h2>
 
 								<ul className="flex mt-4 space-x-4">
-									<motion.li variants={fadeInUpAnimation} className="bg-[#e6e6e6cf]/50 h-10 w-10 rounded-full flex items-center justify-center shrink-0">
+									<motion.li
+										variants={fadeInUpAnimation}
+										className="bg-[#e6e6e6cf]/50 h-10 w-10 rounded-full flex items-center justify-center shrink-0"
+									>
 										<a
 											target="_blank"
-											href="javascript:void(0)"
+											href="https://www.github.com/incoderweb/"
 										>
 											<FaGithub className="size-6 text-white" />
 										</a>
 									</motion.li>
-									<motion.li variants={fadeInUpAnimation} className="bg-[#e6e6e6cf]/50 h-10 w-10 rounded-full flex items-center justify-center shrink-0">
+									<motion.li
+										variants={fadeInUpAnimation}
+										className="bg-[#e6e6e6cf]/50 h-10 w-10 rounded-full flex items-center justify-center shrink-0"
+									>
 										<a
 											target="_blank"
-											href="https://www.linkedin.com/in/incoderweb/"
+											href="https://www.x.com/incoderweb/"
 										>
 											<BsTwitterX className="size-5 text-white" />
 										</a>
 									</motion.li>
-									<motion.li variants={fadeInUpAnimation} className="bg-[#e6e6e6cf]/50 h-10 w-10 rounded-full flex items-center justify-center shrink-0">
+									<motion.li
+										variants={fadeInUpAnimation}
+										className="bg-[#e6e6e6cf]/50 h-10 w-10 rounded-full flex items-center justify-center shrink-0"
+									>
 										<a
 											target="_blank"
 											href="https://instagram.com/incoderweb"
@@ -118,34 +236,108 @@ export default function Contact() {
 							</div>
 						</div>
 
-						<form className="ml-auto space-y-4">
-							<motion.input variants={fadeInUpAnimation}
-								type="text"
-								placeholder="Name"
-								className="contactInput"
-							/>
-							<motion.input variants={fadeInUpAnimation}
-								type="email"
-								placeholder="Email"
-								className="contactInput"
-							/>
-							<motion.input variants={fadeInUpAnimation}
-								type="text"
-								placeholder="Subject"
-								className="contactInput"
-							/>
-							<motion.textarea variants={fadeInUpAnimation}
-								placeholder="Enter Your Message"
-								rows={6}
-								className="contactInput"
-							></motion.textarea>
-							<motion.button variants={fadeInUpAnimation}
+						<motion.form
+							className="ml-auto space-y-4 w-full"
+							onSubmit={(e) => e.preventDefault()}
+						>
+							<div className="inputWrapper">
+								<motion.input
+									variants={fadeInUpAnimation}
+									type="text"
+									placeholder="Name"
+									className="contactInput"
+									value={formData.UserName}
+									name="UserName"
+									onChange={(e) => handleChange(e)}
+								/>
+								{formErrors.UserName && (
+									<>
+										<div className="errorBox">
+											{formErrors.UserName}
+										</div>
+									</>
+								)}
+							</div>
+							<div className="inputWrapper">
+								<motion.input
+									variants={fadeInUpAnimation}
+									type="email"
+									placeholder="Email"
+									className="contactInput"
+									name="email"
+									value={formData.email}
+									onChange={(e) => handleChange(e)}
+								/>
+								{formErrors.email && (
+									<>
+										<div className="errorBox">
+											{formErrors.email}
+										</div>
+									</>
+								)}
+							</div>
+							<div className="inputWrapper">
+								<motion.input
+									variants={fadeInUpAnimation}
+									type="text"
+									placeholder="Subject"
+									className="contactInput"
+									name="subject"
+									value={formData.subject}
+									onChange={(e) => handleChange(e)}
+								/>
+								{formErrors.subject && (
+									<>
+										<div className="errorBox">
+											{formErrors.subject}
+										</div>
+									</>
+								)}
+							</div>
+							<div className="inputWrapper">
+								<motion.textarea
+									variants={fadeInUpAnimation}
+									placeholder="Enter Your Message"
+									rows={6}
+									className="contactInput"
+									name="message"
+									value={formData.message}
+									onChange={(e) => handleChange(e)}
+								></motion.textarea>
+								{formErrors.message && (
+									<>
+										<div className="errorBox">
+											{formErrors.message}
+										</div>
+									</>
+								)}
+							</div>
+							<motion.button
+								variants={fadeInUpAnimation}
 								type="button"
-								className="text-white bg-blue-500 hover:bg-blue-600 tracking-wide rounded-md text-sm px-4 py-3 w-full !mt-6"
+								onClick={() => submitContactForm()}
+								className={`text-white ${
+									loading
+										? "bg-blue-900/50 cursor-not-allowed hover:bg-blue-900/50"
+										: "bg-blue-500"
+								} hover:bg-blue-600 tracking-wide rounded-md text-sm px-4 py-3 w-full !mt-6`}
+								disabled={loading}
 							>
-								Send
+								{loading ? "Sending..." : "Send"}
 							</motion.button>
-						</form>
+							{isSent && (
+								<div className="text-emerald-600 flex justify-center items-center">
+									<IoIosRocket className="mr-1" /> Message
+									Sent Successfully
+								</div>
+							)}
+							{isErr && (
+								<div className="text-red-600 flex justify-center items-center">
+									<BiSolidError className="mr-1" /> Message
+									Sent Successfully
+								</div>
+							)}
+						</motion.form>
 					</motion.div>
 				</div>
 			</motion.section>
